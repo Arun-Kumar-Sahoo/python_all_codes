@@ -22,11 +22,11 @@ SELECT
     """
 DDL = ""
 for index, row in df1.iterrows():
-    if(row['Mapping'] == "CONSTANT"):
+    if row['Mapping'] == "CONSTANT":
         DDL +=  (row['SourceColumn'] + " as " + row['TargetColumn'] + ",\n")
-    elif(row['Mapping'] == "DIRECT"):
+    elif row['Mapping'] == "DIRECT":
         DDL += (row['TargetColumn'] + ",\n")
-    elif(row['Mapping'] == "DERIVED"):
+    elif row['Mapping'] == "DERIVED":
         DDL += (row['SourceColumn'] + " as " + row['TargetColumn'] + ",\n")
 DDL = DDL[:-2]
 DDL += "\nFROM {{ref:" + row['SourceTable'] + "}}"
